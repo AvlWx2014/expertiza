@@ -1,5 +1,7 @@
 
 Expertiza::Application.routes.draw do
+  resources :review_times
+  resources :review_times
   ###
   # Please insert new routes alphabetically!
   ###

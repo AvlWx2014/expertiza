@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Time data:
+  = @review_time.time_data
+
+= link_to 'Edit', edit_review_time_path(@review_time)
+\|
+= link_to 'Back', review_times_path

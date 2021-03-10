@@ -1,0 +1,13 @@
+= form_for @review_time do |f|
+  - if @review_time.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@review_time.errors.count, "error")} prohibited this review_time from being saved:"
+      %ul
+        - @review_time.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :time_data
+    = f.number_field :time_data
+  .actions
+    = f.submit 'Save'
