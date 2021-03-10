@@ -10,11 +10,6 @@ class ReviewTimesController < ApplicationController
   def show
   end
 
-  # GET /review_times/new
-  def new
-    @review_time = ReviewTime.new
-  end
-
   # GET /review_times/1/edit
   def edit
   end
