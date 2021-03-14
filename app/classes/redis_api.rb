@@ -1,8 +1,9 @@
 class RedisApi
-  @client = Redis.new(
-    host: ENV.fetch("REDIS_HOST", REDIS_CONFIG["default"]),
-    port: REDIS_CONFIG["port"]
-  )
+
+  # by injecting a client object, we can test this with a mock
+  def initialize(client)
+    @client = client
+  end
 
   # Get the value stored at [key].
   #
