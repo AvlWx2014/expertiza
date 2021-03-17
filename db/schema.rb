@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201125202200) do
+ActiveRecord::Schema.define(version: 20210315184532) do
 
   create_table "account_requests", force: :cascade do |t|
     t.string   "name",              limit: 255
@@ -652,8 +652,9 @@ ActiveRecord::Schema.define(version: 20201125202200) do
     t.string   "link",       limit: 255
     t.datetime "start_at"
     t.datetime "end_at"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "total_time", limit: 4,   default: 0
   end
 
   create_table "suggestion_comments", force: :cascade do |t|
