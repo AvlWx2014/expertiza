@@ -8,12 +8,10 @@ describe SubmissionViewingEventsController do
 
   describe '#record_start_time' do
     context 'when the link is opened and timed' do
-      it 'should update time record with end time as current time' do
-
-      end
-
-      it 'should update time record with end time as current time for an Expertiza Review link' do
-
+      it 'should update/create a record without any error' do
+        params = {:format => 'json',:submission_viewing_event => {:map_id => 1,:round => 1, :link => 'Expertiza Review'}}
+        post :record_start_time,params
+        expect(response.status).to eq(200)
       end
     end
   end
@@ -22,7 +20,9 @@ describe SubmissionViewingEventsController do
   describe '#record_end_time' do
     context 'when response does not have a end time' do
       it 'should update time record with end time as current time' do
-
+        params = {:format => 'json',:submission_viewing_event => {:map_id => 1,:round => 1, :link => 'Expertiza Review'}}
+        post :record_end_time,params
+        expect(response.status).to eq(204)
       end
     end
   end
@@ -31,7 +31,9 @@ describe SubmissionViewingEventsController do
   describe '#mark_end_time' do
     context 'end time for all uncommitted files' do
       it 'update end time for all the files that are not having an end time' do
-
+        params = {:format => 'json',:submission_viewing_event => {:map_id => 1,:round => 1, :link => 'Expertiza Review'}}
+        post :mark_end_time,params
+        expect(response.status).to eq(200)
       end
     end
   end
@@ -49,11 +51,11 @@ describe SubmissionViewingEventsController do
         post :getTimingDetails,params
 
         expect(response.status).to eq(200)
-        expect(JSON.parse(response.body)["Labels"]).not_to be_nil
-        expect(JSON.parse(response.body)["Data"]).not_to be_nil
-        expect(JSON.parse(response.body)["tables"]).not_to be_nil
-        expect(JSON.parse(response.body)["total"]).not_to be_nil
-        expect(JSON.parse(response.body)["totalavg"]).not_to be_nil
+        expect(JSON.parse(response.body)).to have_key("Labels")
+        expect(JSON.parse(response.body)).to have_key("Data")
+        expect(JSON.parse(response.body)).to have_key("tables")
+        expect(JSON.parse(response.body)).to have_key("total")
+        expect(JSON.parse(response.body)).to have_key("totalavg")
       end
     end
   end
